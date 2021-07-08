@@ -1,0 +1,36 @@
+.content{
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.timetable{
+	margin-top: 10vh;
+	height: 80vh;
+	width: 100%;
+	border-radius: 1.5rem;
+  background-color: white;
+	overflow: hidden;
+	text-align: center;
+}
+
+.timetable th{
+	font-size: 2rem;
+	background-color: #6784e2;
+	color: white;
+}
+
+.timetable td{
+	font-size: 1.5rem;
+	background-color: white;
+	color: black;
+}
+
+@media screen and (max-width : 992px) {
+	.timetable th{
+		font-size: 24px;
+	}
+	.timetable td{
+		font-size: 16px;
+	}
+}

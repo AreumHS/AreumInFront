@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="../src/css/shop.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="./src/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
+
+<div class="content custom-font bg-light align-med">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-lg-2 align-items-center justify-content-center vh-100 flex-row-reverse">
+      <div class="col h-100 px-3 py-5 rightpage">
+        <div class="rbox-top">
+          <h1 class="boxtitle">훠룽쿵부 제휴혜택</h1>
+          <h2 class="boxmaintxt">5번 방문시 음료수 하나 증정<br/>현 방문횟수 4회</h2>
+          <div class="pt-5 pb-4 mx-auto">
+            <img class="checkimg" src="../src/img/check.png">
+            <img class="checkimg" src="../src/img/check.png">
+            <img class="checkimg" src="../src/img/check.png">
+            <img class="checkimg" src="../src/img/check.png">
+          </div>
+        </div>
+        <div class="rbox-bottom">
+          <h1 class="boxtitle">제휴할인 목록</h1>
+          <div class="shops">
+            <button class="shopbtn" onclick="update(1, 36.51185, 127.24884)">엉클 생고기</button>
+            <button class="shopbtn" onclick="update(2, 36.51221, 127.24930)">훠룽쿵부</button>
+            <button class="shopbtn" onclick="update(3, 36.51175, 127.24313)">오지다 부대찌개</button>
+            <button class="shopbtn" onclick="update(4, 36.51212, 127.24307)">얌샘김밥</button>          
+            <button class="shopbtn" onclick="update(5, 36.51199, 127.24957)">불쌈냉면</button>
+            <button class="shopbtn" onclick="update(6, 36.51226, 127.24889)">떡불킹</button>
+            <button class="shopbtn" onclick="update(7, 36.51225, 127.24884)">도노 베이커리</button>
+            <button class="shopbtn" onclick="update(8, 36.51152, 127.24367)">아이비 스터디카페</button>            
+          </div>
+        </div>
+      </div>
+      
+      <div class="col h-100 px-3 py-5">
+        <div id="map" class="box"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca494719e4940aa330be7dab60c4d0b2"></script>
+  <script>
+    var udt = false;
+
+    function mapinit() {
+      var container = document.getElementById('map');
+      var options = {
+        center: new kakao.maps.LatLng(36.51299, 127.24517),
+        level: 3
+      };
+
+      var map = new kakao.maps.Map(container, options);
+
+      var mk1 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51185, 127.24884),
+        map: map
+      });
+
+      var mk2 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51221, 127.24930),
+        map: map
+      });
+
+      var mk3 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51175, 127.24313),
+        map: map
+      });
+
+      var mk4 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51212, 127.24307),
+        map: map
+      });
+
+      var mk5 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51199, 127.24957),
+        map: map
+      });
+
+      var mk6 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51226, 127.24889),
+        map: map
+      });
+
+      var mk7 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51225, 127.24884),
+        map: map
+      });
+
+      var mk8 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(36.51152, 127.24367),
+        map: map
+      });
+    }
+
+    function update(shopid, xpos, ypos) {
+      udt = true;
+
+      var container = document.getElementById('map');
+      var options = {
+        center: new kakao.maps.LatLng(xpos, ypos),
+        level: 3
+      };
+
+      var map = new kakao.maps.Map(container, options);
+
+      var marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(xpos, ypos),
+        map: map
+      });
+    }
+
+    mapinit();
+  </script>
+</div>

@@ -1,0 +1,52 @@
+.content{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.calendar{
+    margin-top: 10vh;
+	height: 80vh;
+	width: 100%;
+	border-radius: 1.5rem;
+    background-color: white;
+	overflow: hidden;
+	text-align: center;
+}
+
+.calendar table{
+    height: 70vh;
+    width: 100%;
+}
+
+.months{
+    font-size: 32px;
+    height: 10vh;
+    width: 100%;
+    background-color: #6784e2;
+    color: white;
+}
+
+.calendar th{
+	font-size: 2rem;
+	background-color: #6784e2;
+	color: white;
+}
+
+.calendar td{
+    max-width: 1rem;
+    max-height: .5rem;
+	font-size: 1.5rem;
+	background-color: white;
+	color: black;
+}
+
+.special{
+    font-size: 1rem;
+}
+
+@media screen and (max-width : 996px) {
+    .special{
+        font-size: .8rem !important;
+    }
+}

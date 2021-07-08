@@ -1,0 +1,222 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="../src/css/meal.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="./src/css/bootstrap.min.css" rel="stylesheet">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+
+<script>
+	function pageinit() {
+		var today = new Date();
+		var day = today.getDay();
+		var hour = today.getHours();
+
+		if (hour >= 18) day++; //오후 7시 이후에는 다음날 중식 강조
+		if (0 < day && day < 6) {
+			var getid = 2 * day - ((12 < hour && hour < 18) ? 0 : 1); //오후 1~7시에 석식 강조
+			getid = "m" + getid;
+
+			document.getElementById(getid).style.backgroundColor = "#6784e2";
+			document.getElementById(getid).style.color = "white";
+
+			getid = "m" + getid;
+
+			document.getElementById(getid).style.backgroundColor = "#6784e2";
+			document.getElementById(getid).style.color = "white";
+			document.getElementById(getid).className = "carousel-item mb-meal active";
+		}
+	}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
+
+<div class="content bg-light custom-font">
+	<div class="w-100 vh-100 text-center my-auto">
+		<div class="for-pc h-100 align-items-center">
+			<div class="container">
+				<div class="row row-cols-5">
+					<div class="col">
+						<div id="mon" class="pc-meal">
+							<div class="pc-meal-day mb-5">월</div>
+							<div class="p-3">
+								<div class="row row-cols-1 g-3">
+									<div class="col mb-5">
+										<div id="m1" class="pc-meal-list">
+											<h5>중식</h5>
+											기장밥<br/>어묵탕<br/>도라지나물<br/>닭살수제비볶음<br/>비빔만두<br/>백김치<br/>카프리썬
+										</div>
+									</div>
+									<div class="col mb-5">
+										<div id="m2" class="pc-meal-list">
+											<h5>석식</h5>
+											발아현미밥<br/>햄모듬찌개<br/>우엉채조림<br/>양념깻잎지<br/>반반치킨<br/>깍두기<br/>떠먹는요구르트
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div id="tue" class="pc-meal">
+							<div class="pc-meal-day mb-5">화</div>
+							<div class="p-3">
+								<div class="row row-cols-1 g-3">
+									<div class="col mb-5">
+										<div id="m3" class="pc-meal-list">
+											<h5>중식</h5>
+											찰보리밥<br/>오리탕<br/>김치치즈갈릭스테이크<br/>자장떡볶이<br/>청경채무침<br/>깍두기<br/>사과한모금(쥬스)
+										</div>
+									</div>
+									<div class="col mb-5">
+										<div id="m4" class="pc-meal-list">
+											<h5>석식</h5>
+											기장밥<br/>오징어무국<br/>아삭오이고추(자율)<br/>언양식돈불고기&파채<br/>배추김치<br/>써핑쿨<br/>플레인핫도그
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div id="wed" class="pc-meal">
+							<div class="pc-meal-day mb-5">수</div>
+							<div class="p-3">
+								<div class="row row-cols-1 g-3">
+									<div class="col mb-5">
+										<div id="m5" class="pc-meal-list">
+											<h5>중식</h5>
+											볶음밥/자장소스<br/>스틱단무지<br/>꿔바로우&파채무침<br/>배추김치<br/>과일화채(국대용)
+										</div>
+									</div>
+									<div class="col mb-5">
+										<div id="m6" class="pc-meal-list">
+											<h5>석식</h5>
+											닭갈비마요덮밥<br/>미역된장국<br/>열대과일샐러드<br/>롤돈까스/소스<br/>깍두기
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div id="thu" class="pc-meal">
+							<div class="pc-meal-day mb-5">목</div>
+							<div class="p-3">
+								<div class="row row-cols-1 g-3">
+									<div class="col mb-5">
+										<div id="m7" class="pc-meal-list">
+											<h5>중식</h5>
+											흑미기장밥<br/>(매콤)쇠고기당면국<br/>참나물무침<br/>치즈불돈<br/>고추장떡<br/>깍두기<br/>(하우스)귤
+										</div>
+									</div>
+									<div class="col mb-5">
+										<div id="m8" class="pc-meal-list">
+											<h5>석식</h5>
+											단호박카레라이스<br/>모닝빵샌드위치<br/>단무지무침(자율)<br/>배추김치<br/>혼합시리얼&우유(국대용)
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div id="fri" class="pc-meal">
+							<div class="pc-meal-day mb-5">금</div>
+							<div class="p-3">
+								<div class="row row-cols-1 g-3">
+									<div class="col mb-5">
+										<div id="m9" class="pc-meal-list">
+											<h5>중식</h5>
+											찹쌀밥<br/>한방삼계탕(반각)<br/>수제왕새우만두<br/>메밀비빔국수<br/>보쌈김치<br/>수박<br/>오이스틱&쌈장
+										</div>
+									</div>
+									<div class="col mb-5">
+										<div id="m10" class="pc-meal-list">
+											<h5>석식</h5>
+											오늘의 급식이 없습니다
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="for-mobile">
+			<div class="container">
+				<div class="mb-container">
+					<div id="mobilemeal" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div id="mm1" class="carousel-item mb-meal">
+								월 - 중식
+								<hr>
+								기장밥<br/>어묵탕<br/>도라지나물<br/>닭살수제비볶음<br/>비빔만두<br/>백김치<br/>카프리썬
+							</div>
+							<div id="mm2" class="carousel-item mb-meal">
+								월 - 석식
+								<hr>
+								발아현미밥<br/>햄모듬찌개<br/>우엉채조림<br/>양념깻잎지<br/>반반치킨<br/>깍두기<br/>떠먹는요구르트
+							</div>
+							<div id="mm3" class="carousel-item mb-meal">
+								화 - 중식
+								<hr>
+								찰보리밥<br/>오리탕<br/>김치치즈갈릭스테이크<br/>자장떡볶이<br/>청경채무침<br/>깍두기<br/>사과한모금(쥬스)
+							</div>
+							<div id="mm4" class="carousel-item mb-meal">
+								화 - 석식
+								<hr>
+								기장밥<br/>오징어무국<br/>아삭오이고추(자율)<br/>언양식돈불고기&파채<br/>배추김치<br/>써핑쿨<br/>플레인핫도그
+							</div>
+							<div id="mm5" class="carousel-item mb-meal">
+								수 - 중식
+								<hr>
+								볶음밥/자장소스<br/>스틱단무지<br/>꿔바로우&파채무침<br/>배추김치<br/>과일화채(국대용)
+							</div>
+							<div id="mm6" class="carousel-item mb-meal">
+								수 - 석식
+								<hr>
+								닭갈비마요덮밥<br/>미역된장국<br/>열대과일샐러드<br/>롤돈까스/소스<br/>깍두기
+							</div>
+							<div id="mm7" class="carousel-item mb-meal">
+								목 - 중식
+								<hr>
+								흑미기장밥<br/>(매콤)쇠고기당면국<br/>참나물무침<br/>치즈불돈<br/>고추장떡<br/>깍두기<br/>(하우스)귤
+							</div>
+							<div id="mm8" class="carousel-item mb-meal">
+								목 - 석식
+								<hr>
+								단호박카레라이스<br/>모닝빵샌드위치<br/>단무지무침(자율)<br/>배추김치<br/>혼합시리얼&우유(국대용)
+							</div>
+							<div id="mm9" class="carousel-item mb-meal">
+								금 - 중식
+								<hr>
+								찹쌀밥<br/>한방삼계탕(반각)<br/>수제왕새우만두<br/>메밀비빔국수<br/>보쌈김치<br/>수박<br/>오이스틱&쌈장
+							</div>
+							<div id="mm10" class="carousel-item mb-meal">
+								금 - 석식
+								<hr>
+								오늘의 급식이 없습니다
+							</div>
+						</div>
+
+						<button class="carousel-control-prev black" data-bs-target="#mobilemeal" data-bs-slide="prev"> < </button>
+						<button class="carousel-control-next black" data-bs-target="#mobilemeal" data-bs-slide="next"> > </button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>pageinit();</script>

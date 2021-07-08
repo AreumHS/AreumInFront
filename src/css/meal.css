@@ -1,0 +1,81 @@
+
+.prize{
+  width: 232px !important;
+}
+
+.black{
+  color: black !important;
+  outline: black !important;
+}
+
+
+/*********** 임시 *************/
+
+.pc-meal-day .container{
+  padding: 1rem !important;
+}
+
+.content{
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.lightbg{
+  background-color: #f1f1f1;
+}
+
+.for-pc{
+  display: flex;
+}
+
+.for-mobile{
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .for-pc{
+    display: none;
+  }
+  .for-mobile{
+    display: block;
+  }
+}
+
+.pc-meal{
+  border-radius: 1.5rem;
+  background: #ffffff;
+}
+
+.pc-meal-day{
+  font-size: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+}
+
+.pc-meal-list{
+  background-color: white;
+  border-radius: 1.5rem;
+  width: 100%;
+  height: 28vh;
+  color: #000000;
+}
+
+.mb-container{
+  overflow: hidden;
+  margin-top: 5vh;
+  height: 90vh;
+  border-radius: 20px;
+}
+
+.mb-meal{
+  height: 90vh;
+  font-size: 32px;
+  background-color: #ffffff;
+}
+
+.carousel-text{
+  font-size: 24px;
+  color: black !important;
+}

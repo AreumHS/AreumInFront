@@ -1,0 +1,127 @@
+.modal-content{
+    border-radius: 2rem !important;
+    padding: 1rem !important;
+}
+
+.btn{
+    border: none !important;
+    padding: 0.5rem 2rem !important;
+    font-size: 1.25rem !important;
+    border-radius: 1rem !important;
+}
+
+
+.mealtable{
+    padding: 3rem 0 3rem 1rem;
+    font-size: 1.75rem;
+}
+
+html{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+/*    background-image: url("../img/test-bg-0.jpg"); */
+    background-position: center center;
+}
+
+.h1-bigger{
+    font-size: 48px;
+    display: inline-block;
+    height: 48px;
+}
+
+.bodyalign{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.smallbox{
+    width: 100%;
+    max-width: 992px;
+    margin: 0 auto;
+}
+
+.box{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 3rem;
+    height: 500px;
+}
+.wrapper{
+    position: relative;
+}
+.bottomalign{
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    left: 2rem;
+}
+
+.form{
+    width: 100%;
+    height: 50px;
+    border: hidden;
+    border-radius: 1.25rem;
+    padding: 0 1rem;
+    margin: 0.3rem 0;
+}
+.login-input{
+    width: 100%;
+    height: 50px;
+    border: hidden;
+    border-radius: 1rem;
+}
+
+.field{
+    background: #f1f1f1;
+    color: black;
+}
+.field:focus {outline:none;}
+
+.button{
+    margin-top: 2rem;
+    color: white;
+    background-color: rgb(103, 132, 226);
+}
+.button:hover{
+    animation: shake .3s;
+}
+
+
+.logo{
+    height: 64px;
+}
+
+.side-noti{
+    width: 56px;
+    height: 56px;
+    border-radius: 1.5rem;
+    background-color:rgb(103, 132, 226);
+    position: fixed !important;
+    bottom: 1rem;
+    right: 1rem;
+    border: 1px solid white;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+@media screen and (max-width: 576px){
+
+}

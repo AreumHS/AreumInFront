@@ -1,0 +1,45 @@
+
+@font-face {
+    font-family: 'jalnan';
+    src : url("../font/Jalnan.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.padd{
+    padding: 3rem !important;
+}
+
+.bg-light{
+    background-color: #f1f1f1 !important;
+}
+
+
+.bg-colored{
+    background-color: rgb(103, 132, 226);
+    color: white;
+}
+
+.btn-primary{
+    background-color:rgb(103, 132, 226) !important;
+}
+
+.custom-font{
+    font-family: 'jalnan';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.logo{
+    height: 56px;
+}
+.logoborder{
+    border-radius: 1.25rem;
+}
+
+@media screen and (max-width: 992px){
+    .padd{
+        padding: 1rem !important;
+    }
+}

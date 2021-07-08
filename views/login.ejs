@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>아름in - 로그인</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- My CSS -->
+        <link rel="stylesheet" href="../src/css/login.css">
+        <link rel="stylesheet" href="../src/lib/library.css">
+        <link rel="stylesheet" href="../src/lib/bootstrap.min.css">
+    </head>
+
+    <div class="modal fade show" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content custom-font mb-5">
+            <div class="modal-header">
+              <h1 class="modal-title" id="staticBackdropLabel">공지사항</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>알파 버전 상태입니다.</h5>
+                <h5>현재 회원가입 기능은 작동하지 않아요!</h5>
+                <h5>디자인과 기능 참고 용도로 사용해 주세요</h5>
+                <h5>원활한 시연을 위해 값이 변하지 않습니다.</h5><br/>
+                <h5>즉 이 홈페이지에서 제공하는 정보는</h5>
+                <h5>실제 정확한 정보와 차이가 있습니다.</h5><br/>
+                <h5>학번 비밀번호 없이 로그인이 가능합니다</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+              <button type="button" class="btn btn-primary">회원가입</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <body class="bg-light bodyalign">
+        <div class="smallbox">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-md-6 col-sm-12 mb-5 padd">
+                        <div class="box bg-white wrapper bordered custom-font">
+                            <div class="d-flex justify-content-center">
+                                <img src="../src/img/areumin-logo.png" alt="logo" class="logo">
+                                <img src="../src/img/title_black.png" alt="logo" class="logo">
+                            </div>
+                            <form action="/main" method="GET" class="bottomalign">
+                                <input type="text" name="id" placeholder="학번" class="form field" autocomplete="off">
+                                <input type="password" name="pw" placeholder="비밀번호" class="form field" autocomplete="off">
+                                <button class="form button custom-font">로그인</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-5 padd">
+                        <div class="box bg-colored custom-font">
+                            <h1 class="h1-bigger">오늘의 급식</h1>
+                            <div class="mealtable">
+                                <!--<%- meal.lunch %>-->
+                                단호박카레라이스<br/>모닝빵샌드위치<br/>단무지무침(자율)<br/>배추김치<br/>혼합시리얼&우유(국대용)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!-- Bootstrap JS -->
+    <script src="../src/lib/bootstrap.bundle.min.js"></script>
+    <script src="../src/lib/bootstrap.min.js"></script>
+
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'),{ keyboard: false });
+        myModal.show();
+    </script>
+</html>
