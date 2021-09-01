@@ -1,73 +1,140 @@
-body{
-    background-color: #f1f1f1 !important;
-}
-
-.centeralign{
+.bodyalign{
     display: flex;
     align-items: center;
 }
 
+.smallbox{
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.box{
+    margin: 0 auto;
+    padding: 2rem;
+    height: 500px;
+    width: 100%;
+}
+
+.sizer{
+    width: 480px;
+    margin: auto 0;
+}
+
+@media screen and (max-width: 992px){
+    .sizer{
+        width: 100%;
+        margin: 0;
+    }
+  }
+
+/**************** 기존 소스 *****************/
+
+.widescreen{
+    position: absolute;
+    left: 0%;
+    height: 600px;
+    width: 300%;
+    transition: .5s;
+}
+
 .bodyalign{
-    min-height: 100%;
-    display: flex !important;
+    display: flex;
     align-items: center;
 }
 
-.register-box{
-    height: auto;
-    max-width: 400px;
-    margin: 0 auto;
-    border-radius: 1.25rem;
-    background: white;
-    padding: 2rem;
-    border-radius: 3rem;
-}
-.register-box:focus {outline:none;}
-
-.logo{
-    height: 64px;
+.title{
+	top: 2rem;
+	left: 2rem;
+	display: inline;
+    width: max-content;
+	float: left;
 }
 
-.register{
+
+
+.mybtn{
     height: 50px;
-    width: 100%;
-    border: none;
-    border-radius: 1.25rem;
-    margin: 0.3rem 0;
-    padding: 0 1rem;
+    width: 50px;
+    border-radius: 1rem;
 }
-.register:focus {outline:none;}
+
+.step{
+    height: 500px;
+    width: 400px;
+    border-radius: 2.5rem;
+    overflow: hidden;
+}
+
+.obj{
+    height: 50px;
+    border-radius: 1rem;
+}
+
+.ml{
+    margin-left: .5rem;
+}
+
+.mr{
+    margin-right: .5rem;
+}
 
 .input{
-    background-color: #f1f1f1;
+    border: none;
+    background: #f1f1f1;
+    color: black;
+    vertical-align: middle;
 }
 
-.button{
-    background-color: rgb(103, 132, 226);
-    color: white;
-    margin-top: 2rem;
+.fit{
+    max-height: 100%;
+    width: auto;
 }
 
-.button:hover{
-    animation: shake .3s;
+.rev{
+    transform: scaleX(-1);
 }
 
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+.input:focus{
+    outline: none;
 }
 
-@media screen and (max-width: 1200px){
-    .bodyalign{
-        display: block !important;
+.wh-auto{
+    height: max-content !important;
+    width: max-content !important;
+}
+
+.cambox{
+    width: 100%;
+}
+
+.cambox video{
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.cambox canvas{
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.mard{
+    margin: 3rem !important;
+}
+
+.camclose{
+    z-index: 999;
+}
+
+
+canvas.drawing, canvas.drawingBuffer {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+@media screen and (max-width: 968px){
+    .mard{
+        margin: 1rem !important;
     }
 }

@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/src/css/shop.css">
+
+<div class="min-vh-100 d-flex">
+  <div class="container align-self-center padd">
+    <div class="row row-cols-1 row-cols-lg-12 gy-3">
+      <div class="col-12">
+        <h3 class="title bg-colored p-4 r3 border-a font-c">제휴 서비스</h3>
+      </div>
+      <div class="col-12 col-lg-6 mapwrap">
+        <div class="cover"></div>
+        <div id="map" class="obj map bg-white r3 greyborder-a border-a">
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="d-flex flex-column obj bg-white r3 border-a p-4">
+          <h1 class="font-c mb-3">제휴 목록</h1>
+          <div class="list">
+            <div id="li1" class="list-box bglight" onclick="toggleList(1)">
+              <h4 class="list-title font-n ">엉클 생고기</h4>
+              <div id="lc1" class="list-content">
+                공기밥 무료 제공 (리필 가능)
+              </div>
+            </div>
+            <div id="li3" class="list-box bglight" onclick="toggleList(3)">
+              <h4 class="list-title font-n ">오지다 부대찌개</h4>
+              <div id="lc3" class="list-content">
+                1인당 500원 할인 또는<br>2인당 라면사리 하나 제공중 택1
+              </div>
+            </div>
+            <div id="li4" class="list-box bglight" onclick="toggleList(4)">
+              <h4 class="list-title font-n ">얌샘김밥</h4>
+              <div id="lc4" class="list-content">
+                7천원 이상 구매 - 음료수 한 캔 제공
+              </div>
+            </div>
+            <div id="li5" class="list-box bglight" onclick="toggleList(5)">
+              <h4 class="list-title font-n">불쌈냉면</h4>
+              <div id="lc5" class="list-content">
+                (2인 이상) 1인당 8,000원 이상 구매 -<br>
+                테이블 당 음료수 한 캔 제공
+              </div>
+            </div>
+            <div id="li6" class="list-box bglight" onclick="toggleList(6)">
+              <h4 class="list-title font-n ">떡불킹</h4>
+              <div id="lc6" class="list-content">
+                총 구매 금액 10% 할인
+              </div>
+            </div>
+            <div id="li7" class="list-box bglight" onclick="toggleList(7)">
+              <h4 class="list-title font-n ">도노 베이커리</h4>
+              <div id="lc7" class="list-content">
+                총 구매 금액 10% 할인
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca494719e4940aa330be7dab60c4d0b2"></script>
+<script src="/src/js/shop.js"></script>
+<script>mapinit()</script>

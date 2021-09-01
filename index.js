@@ -1,152 +1,188 @@
-const express   = require('express');
-const ejs       = require('ejs');
-const request   = require('request');
+const express = require('express');
+const ejs = require('ejs');
+const request = require('request');
 const { query, urlencoded, json } = require('express');
 const { get } = require('request');
 const app = express();
+const cookieparser = require('cookie-parser');
+
 
 app.set("view engine", "ejs");
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(express.static(__dirname + '/'));
+app.use(cookieparser());
 
-var url_ = "https://areum.in";
-/*
-app.post('https://api.areum.in/auth/login', function(req, res){
-  var _url = 'https://api.areum.in/auth/login';
-
-  request({
-      uri: _url,
-      method: 'POST',
-      body: { 'id' : req.body.id, 'pw' : req.body.pw },
-      json:true
-  }, function(err2,res2,body2){
-     var callback = body2;
-
-     if(callback.status == "Succeed"){
-      Location.href = url_ + "/main?param=" + callback.return;
-     }
-     else{
-      switch(callback.log){
-        case "NullException":{
-            alert("학번 혹은 비밀번호가 입력되지 않았습니다.");
-            break;
-        }case "IdIncorrect":{
-            alert("올바른 학번을 입력해주세요.");
-            break;
-        }case "DatabaseSelectErr":{
-            alert("데이터베이스 구문에러");
-            break;
-        }case "IdIsntExist":{
-            alert("계정이 존재하지 않습니다.");
-            break;
-        }case "PasswordFalse":{
-            alert("비밀번호를 다시 입력하여주세요.");
-            break;
-        }
-       }
-       Location.href = url_ + "/login";
-     }
-  });
+app.get('/', function (req, res) {
+  res.render('ect/location', { url: 'login' });
 });
 
-app.post('https://api.areum.in/auth/register', function(req, res){
-  var _url = 'https://api.areum.in/auth/register';
+app.get('/logout', function (req, res) {
+  res.clearCookie('key');
+  res.render('ect/logout', {});
+});
 
-  request({
-      uri: _url,
+app.post('/entry', function (req, res) {
+  try {
+    request({
+      uri: 'https://api.areum.in/login/post',
       method: 'POST',
-      body:{
-          'id':   req.body.id,
-          'name': req.body.name,
-          'pw':   req.body.pw,
-          'pw2':  req.body.pw2,
-          'email':req.body.email,
-          'code': req.body.code
+      body: { id: req.body.id, pw: req.body.pw },
+      json: true
+    }, function (error, response, body) {
+      if (body != 'Failed') {
+        const msday = 1000 * 24 * 60 * 60;
+        res.cookie('key', body, {
+          maxAge: msday
+        });
+      }
+      res.render('ect/entry', { stat: body });
+    });
+  } catch (error) {
+    console.log(error);
+    //res.render('ect/error', { log: error });
+  }
+});
+
+app.post('/regientry', function (req, res) {
+  try {
+    request({
+      uri: 'https://api.areum.in/register/post',
+      method: 'POST',
+      body: {
+        chkcode: req.body.chkcode,
+        barcode: req.body.barcode,
+        id: req.body.id,
+        email: req.body.email,
+        pw: req.body.pw,
+        pw2: req.body.pw2,
+        pid: req.body.pid,
+        name: req.body.name
       },
-      json:true
-  }, function(err2, res2, body2){
-      var callback = body2;
-
-      if(callback.status == "Succeed"){
-        alert("회원가입을 마쳤습니다.");
-        Location.href = url_ + "/main?param=" + callback.return;
-      }
-      else{
-        switch(callback.log){
-          case "NullException":{
-            alert("입력되지 않은 칸이 있습니다.");
-            break;
-          }case "CodeCheckFailed":{
-            alert("유효하지 않은 코드입니다.");
-            break;
-          }case "PasswordIncorrect":{
-            alert("비밀번호와 비밀번호 재입력이 일치하지 않습니다.");
-            break;
-          }case "IdIncorrect":{
-            alert("아이디는 학번만 가능합니다.");
-            break;
-          }case "EmailIncorrect":{
-            alert("올바르지 않은 이메일 입니다.");
-            break;
-          }case "AlreadyUsing":{
-            alert("이미 사용된 학번입니다.");
-            break;
-          }default:{
-            alert("데이터베이스 오류입니다. 관리자에게 문의하십시오.");
-            break;
-          }
-        }
-        Location.href = url_ + "/register";
-      }
-  });
+      json: true
+    }, function (error, response, body) {
+      res.render('ect/regientry', { stat: body.status, log: body });
+    });
+  } catch (error) {
+    console.log(error);
+    // res.render('ect/error', { log: error });
+  }
 });
-*/
-function daymeal(req,res){
-  request({
-    uri: 'https://api.areum.in/meal/day',
-    method: 'POST',
-    json:true
-  },function(error,response,body){
-    res.render('login', {meal: body.return});
-  });
+
+function getCookie(cookie, name) {
+  var vname = name + "=";
+  var ar = cookie.split(';');
+  for (var i = 0; i < ar.length; i++) {
+    var cstr = ar[i];
+    while (cstr.charAt(0) == ' ') cstr = cstr.substring(1, cstr.length);
+    if (cstr.indexOf(vname) == 0) return cstr.substring(vname.length, cstr.length);
+  }
+  return null;
 }
 
-app.get('/', function(req,res){
-  res.render('login', {meal: ''})
-  //daymeal(req,res);
-});
+app.get('/:input', function (req, res) {
+  try {
+    const pagelist = ['login', 'register', 'main', 'meal', 'shop', 'time', 'calendar'];
+    const page = String(req.params.input);
+    const mycookie = String(req.cookies.key);
 
-app.get('/:input', function (req, res){
-  const page = req.params.input;
-  const list = ['login','register','main', 'meal', 'shop','time','calendar'];
+    //잘못된 주소 >> 404
+    //올바른 주소인데 로그인 x >> /register이면 /register로 이동 >> 아니면 /login으로 이동
+    //올바른 주소인데 로그인 o >> /register또는 /login 이면 /main으로 이동 >> 아니면 page로 이동
 
-  if(list.indexOf(page) != -1){
-    if(page == 'login'){res.render('login', {meal: ''}); /* daymeal(req,res);*/ }
-    if(page == 'register'){ res.render('register', {}); }
 
-    if(page == 'main')   res.render('wrapper', {linkto: page, lunch: 'testmenu'});
-    if(page == 'meal')   res.render('wrapper', {linkto: page});
-    if(page == 'shop')   res.render('wrapper', {linkto: page});
-    if(page == 'time')   res.render('wrapper', {linkto: page});
-    if(page == 'calendar') res.render('wrapper', {linkto: page});
+    if (pagelist.indexOf(page) == -1) {
+      //res.render('ect/404', {});
+    } else {
+      if (mycookie == 'undefined') {
+        switch (page) {
+          case 'login': {
+            request({
+              uri: 'https://api.areum.in/login/get',
+              method: 'GET',
+              json: true
+            }, function (error, response, body) {
+              res.render('feature/login', { ml: body.lunch, md: body.dinner });
+            });
+            break;
+          } case 'register': {
+            res.render('feature/register', {});
+            break;
+          } default: {
+            res.render('ect/location', { url: 'login' });
+          }
+        }
+      } else {
+        const key = getCookie(req.headers.cookie, "key");
+        request({
+          uri: 'https://api.areum.in/side/get?code=' + key,
+          method: 'GET',
+          json: true
+        }, function (_error, _response, _body) {
+          var stdname = _body.name.name;
+          var schnum = _body.schnum;
+          switch (page) {
+            case 'main': {
+              request({
+                uri: 'https://api.areum.in/main/get?code=' + key,
+                method: 'GET',
+                json: true
+              }, function (error, response, body) {
+                res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum, ml: body.meal.lunch, md: body.meal.dinner, time: body.table, barcode: body.barcode });
+              });
+              break;
+            } case 'meal': {
+              request({
+                uri: 'https://api.areum.in/meal/get',
+                method: 'GET',
+                json: true
+              }, function (error, response, body) {
+                //console.log(body);
+                res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum, ml: body.lunch, md: body.dinner });
+              });
+              break;
+            } case 'shop': {
+              res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum });
+              break;
+            } case 'time': {
+              request({
+                uri: 'https://api.areum.in/time/get?code=' + key,
+                method: 'get',
+                json: true
+              }, function (error, response, body) {
+                res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum, time: JSON.parse(body.body), title:body.title });
+              });
+              break;
+            } case 'calendar': {
+              res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum });
+              break;
+            } default: {
+              res.render('ect/location', { url: 'main' });
+              break;
+            }
+          }
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    //res.render('ect/error', { log: error });
   }
-  else res.render('404', {});
 });
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   next(createError(404));
 });
-
-app.use(function(err, req, res, next) {
+/*
+app.use(function (err, req, res, next) {
   //res.locals.message = err.message;
   //res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   res.status(err.status || 500);
-  res.render('404');
+  res.render('ect/404',{});
 });
-
-app.listen(8081, function(){
+*/
+app.listen(8081, function () {
   console.log("Running now...");
 });
 

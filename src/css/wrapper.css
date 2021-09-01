@@ -5,107 +5,31 @@
   top: 0;
   height: 100%;
   width: 300px;
-  color: white;
   transition: .5s;
-  z-index: 9999;
-}
+  z-index: 3;
 
-.top-down{
-  width: 100%;
-  text-align: center;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-.bottom-up{
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  text-align: center;
-}
-
-.sidebar-btn{
-  margin: 0.5rem 0;
-  padding: 0 0.5rem;
-  border: none;
-  height: 50px;
-  width: 100%;
-  background-color: white;
-  border-radius: 1.25rem;
-  font-size: 1.5rem;
-  line-height: 50px;
-  /*color: rgb(103, 132, 226);*/
-}
-
-.sidebar-btn:hover{
-  background-color: #f1f1f1 !important;
-}
-
-.sidebar-btn img{
-  height: 40px;
-  width: 40px;
-  margin: 5px;
-}
-
-.dropbtn {
-  border: none;
-  height: 50px;
-  width: 100%;
-  background-color: white;
-  border-radius: 1.25rem;
-  font-size: 1.5rem;
-  line-height: 50px;
-}
-
-.dropdown {
-  position: relative;
-  display: block;
-  width: 100%;
-}
-
-.dropdown-content {
-  top: -150px;
-  height: 150px;
-  width: 100%;
+#sidebar::-webkit-scrollbar{
   display: none;
-  position: absolute;
-  border-radius: 20px;
-  background-color: white;
-  z-index: 1;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.toppadd{
+  margin-top: 1rem;
 }
 
-.dropdown-content a:hover {
-  border-radius: 1.25rem;
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropbtn{
-  border-radius: 0 0 20px 20px;
-}
-
-.dropdown:hover .dropdown-content {
-  border-radius: 20px 20px 0 0;
-  display: block;
-}
-
-.floating{
-  border: 1px solid #f1f1f1;
+#floating{
   width: 4rem;
   height: 4rem;
   border-radius: 1.5rem;
   background-color: rgb(103, 132, 226);
-  color: white;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
   cursor: pointer;
-  z-index: 99999;
+  z-index: 999;
 }
 
 #content{
@@ -121,19 +45,12 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(45,58,99,0.33);
-  z-index: 9998;
+  z-index: 2;
   transition: 0.5s;
 }
 
-.buttonwrap{
-  padding: 0 0.5rem;
-  width: 100%;
-  background-color: white;
-  border-radius: 1.5rem;
-  margin: 0;
-}
-.logo{
-  display: block;
+.boxsize{
+  max-width: 1540px;
 }
 
 @media screen and (max-width: 1200px){
@@ -145,5 +62,15 @@
   }
   #curtain{
     display: none;
+  }
+  .toppadd{
+    margin-top: 0;
+  }
+  #floating{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.80rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
   }
 }

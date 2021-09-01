@@ -1,0 +1,10 @@
+<script>
+    var stat = "<%= stat %>";
+
+    if(stat == 'Failed'){
+        alert('잘못된 아이디 또는 비밀번호를 입력하셨습니다.');
+        location.href = "/login";
+    } else {
+        location.href = "/main";
+    }
+</script>

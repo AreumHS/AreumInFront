@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/src/css/time.css">
+
+<script>
+	function getweekstr() {
+		var daystr = "";
+		var today = new Date();
+
+		today.setTime(today.getTime() + (1000 * 24 * 60 * 60) * 2);
+		var day = today.getDay();
+		var getmonday = (7 + day - 1) % 7;
+
+		today.setTime(today.getTime() + (1000 * 24 * 60 * 60) * (-getmonday));
+		var year = String(today.getFullYear());
+		var month = String(today.getMonth() + 1);
+		var date = String(today.getDate());
+		daystr += year + '.' + month + '.' + date + '~';
+
+		today.setTime(today.getTime() + (1000 * 24 * 60 * 60) * 4);
+		year = String(today.getFullYear());
+		month = String(today.getMonth() + 1);
+		date = String(today.getDate());
+		daystr += year + '.' + month + '.' + date;
+
+		document.write(daystr);
+	}
+
+	function pageinit(){
+		var today = new Date();
+		var day = today.getDay();
+		document.getElementById('day' + day).className += 'today';
+	}
+</script>
+
+<div class="container min-vh-100 padd d-flex flex-column justify-content-center">
+
+	<div class="mx-auto">
+		<div class="timebox bg-colored font-c border-a r3 p-4 mb-3">
+			<h3><%- title.grade %>학년 <%- title.class %>반 <%- title.num %>번</h3>
+		</div>
+
+		<div class="bg-white p-4-lg r3 border-a">
+			<table class="w-100 text-center">
+				<tr class="font-c title trn">
+					<% var day = ['월', '화', '수', '목', '금']; %>
+					<% for(var i = 0; i < 5; i++){ %>
+						<% if(i != 4){ %>
+							<th><h2 id="day<%- i + 1 %>"><%- day[i] %></h2></th>
+						<% }else{ %>
+							<th><h2 id="day<%- i + 1 %>" class="tdn"><%- day[i] %></h2></th>
+						<% } %>
+					<% } %>
+				</tr>
+				<% for(var i=0; i < 6; i++){ %>
+					<tr>
+						<% for(var j=0; j < 4; j++){ %>
+							<td>
+								<%- time[j][i] %>
+							</td>
+							<% } %>
+								<td class="tdn">
+									<%- time[4][i] %>
+								</td>
+					</tr>
+					<% } %>
+						<tr class="trn">
+							<% for(var j=0; j < 4; j++){ %>
+								<td>
+									<%- time[j][6] %>
+								</td>
+								<% } %>
+									<td class="tdn">
+										<%- time[4][6] %>
+									</td>
+						</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>pageinit()</script>

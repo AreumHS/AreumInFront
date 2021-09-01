@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>아름in - 404페이지</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- My CSS -->
+		<link rel="stylesheet" href="/src/css/404.css">
+		<link rel="stylesheet" href="/src/lib/library.css">
+	</head>
+	<body class="wrapper">
+
+		<div id="text1" class="text1 font-c">
+			404
+		</div>
+		<br>
+		<div id="text2" class="text2 font-c">
+			페이지를 찾을 수 없습니다.
+		</div>
+		<br>
+		<a href="/main">
+			<button class="btn">
+				<div class="btn-txt font-c">아름in 바로가기</div>
+			</button>
+		</a>
+
+		<script>
+			var shadow1 = ""; var hex1 = "#cecece";
+			var shadow2 = ""; var hex2 = "#aeaeae";
+			var level = 1000;
+
+			while(level > 1){
+				shadow1 = shadow1 + level + "px " + level + "px 0 " + hex1 + ", ";
+				shadow2 = shadow2 + level + "px " + level + "px 0 " + hex2 + ", ";
+				level -= 1;
+			}
+			shadow1 = shadow1 + level + "px " + level + "px 0 " + hex1;
+			shadow2 = shadow2 + level + "px " + level + "px 0 " + hex2;
+
+			document.getElementById("text1").style.textShadow = shadow1;
+			document.getElementById("text2").style.textShadow = shadow2;
+		</script>
+
+	</body>
+</html>

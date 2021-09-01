@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>아름인 - 회원가입</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+
+	<link rel="stylesheet" href="/src/css/register.css">
+	<link rel="stylesheet" href="/src/lib/library.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title font-c">바코드 스캔</h5>
+			</div>
+			<div class="modal-body d-flex flex-column">
+				<div id="scanner-container" class="cambox align-self-center"></div>
+				<p class="font-n align-self-center">학생증의 바코드를 스캔해주세요.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-white font-c" data-bs-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<body class="bg-light d-flex justify-content-center min-vh-100">
+<!--
+	<div style="position: fixed; left: 0; top: 0;">
+		<button onclick="debug()">log</button>
+		<form name="uma" action="/regientry" method="post">
+			<input type="text" id="chkcode">
+			<input type="text" id="barcode">
+			<input type="text" id="id">
+			<input type="email" id="email">
+			<input type="password" id="pw">
+			<input type="password" id="pw2">
+			<input type="text" id="name">
+			<input type="text" id="pid">
+			<button>asdf</button>
+		</form>
+	</div>
+-->
+
+	<div class="padd sizer">
+		<div class="box r4 bg-white d-flex flex-column border-a mb-5">
+			<form id="form" name="query_regi" action="regientry" method="POST" class="w-100 h-100">
+				<div id="list1" class="flex-column h-100">
+					<h1 class="font-c mb-auto h0">학생인증</h1>
+
+					<p class="font-n mt-auto">초대코드</p>
+					<input name="chkcode" class="obj input p-3 mt-1" type="text" placeholder="교내에서 배부한 코드">
+					<p class="font-n mt-1">학생증 바코드 인증 (선택)</p>
+					<button type="button" class="obj btn-primary font-c mt-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="cam()">바코드 스캔</button>
+					<input name="barcode" type="hidden">
+
+					<div class="btnbox align-self-end d-flex justify-content-end mt-4">
+						<button type="button" class="mybtn btn-primary ml p-2" onclick="next()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit"></button>
+					</div>
+				</div>
+
+				<div id="list2" class="flex-column h-100">
+					<h1 class="font-c mb-auto h0">계정정보</h1>
+
+					<p class="font-n mt-1">아이디</p>
+					<input name="id" class="obj input p-3 mt-1" type="text" placeholder="4자 이상의 영어 숫자 특문">
+					<p class="font-n mt-1">이메일</p>
+					<input name="email" class="obj input p-3 mt-1" type="text" placeholder="올바른 이메일">
+
+					<div class="btnbox align-self-end d-flex justify-content-end mt-4">
+						<button type="button" class="mybtn btn-primary mr p-2" onclick="prev()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit rev"></button>
+						<button type="button" class="mybtn btn-primary ml p-2" onclick="next()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit"></button>
+					</div>
+				</div>
+
+				<div id="list3" class="flex-column h-100">
+					<h1 class="font-c mb-auto h0">비밀번호</h1>
+
+					<p class="font-n mt-1">비밀번호</p>
+					<input name="pw" class="obj input p-3 mt-1" type="password" placeholder="4자 이상의 영어 숫자 특문">
+					<p class="font-n mt-1">비밀번호 확인</p>
+					<input name="pw2" class="obj input p-3 mt-1" type="password" placeholder="비밀번호 한번 더 입력">
+
+					<div class="btnbox align-self-end d-flex justify-content-end mt-4">
+						<button type="button" class="mybtn btn-primary mr p-2" onclick="prev()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit rev"></button>
+						<button type="button" class="mybtn btn-primary ml p-2" onclick="next()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit"></button>
+					</div>
+				</div>
+
+				<div id="list4" class="flex-column h-100">
+					<h1 class="font-c mb-auto h0">개인정보</h1>
+
+					<p class="font-n mt-auto">이름</p>
+					<input name="name" class="obj input p-3 mt-1" type="text" placeholder="실명">
+					<p class="font-n mt-1">학번</p>
+					<input name="pid" class="obj input p-3 mt-1" type="text" placeholder="숫자 다섯글자 ex) 20709">
+					<p class="font-n mt-1">제출하기</p>
+					<button type="submit" class="obj btn-primary input font-c p-2 mt-1">회원가입</button>
+
+					<div class="btnbox align-self-end d-flex justify-content-end mt-4">
+						<button type="button" class="mybtn btn-primary ml p-2" onclick="prev()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit rev"></button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
+<script src="/src/lib/quagga.min.js"></script>
+<script src="/src/js/register.js"></script>
+<script>
+	render();
+</script>
+
+</html>

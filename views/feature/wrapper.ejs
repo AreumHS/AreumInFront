@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>아름in</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/src/css/wrapper.css">
+    <link rel="stylesheet" href="/src/lib/library.css">
+</head>
+
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+<body class="bodyalign bg-light font-n">
+    <div id="sidebar" class="bg-white p-3 border-l d-flex flex-column">
+        <div class="align-self-start w-100">
+            <div class="mb-5 logo text-center toppadd">
+                <img src="/src/img/areumin-logo.png" alt="areumin" class="logo cursor" onclick="hrefto()">
+                <img src="/src/img/title_black.png" alt="areumin" class="logo cursor" onclick="hrefto()">
+            </div>
+
+            <div class="r3 border-a p-3 mb-4 bg-colored">
+                <h2 class="font-c mb-2">프로필</h2>
+                <p><%- schnum.grade %>학년 <%- schnum.class %>반 <%- schnum.num %>번</p>
+                <p><%- stdname %> 님 안녕하세요!</p>
+                <!--
+                <a class="r1 bg-white btn-small align-middle mt-1 me-1" href="#">설정</a>
+                -->
+                <a class="r1 bg-white btn-small align-middle mt-1 me-1" href="/logout">로그아웃</a>
+            </div>
+<!--
+            <div class="mb-4 p-3 border-a r3">
+                <h2 class="font-c mb-2">오늘 일정</h2>
+                <ul>
+                    <li>오늘은 할일이 없네요</li>
+                    <li>할일2</li>
+                    <li>할일3333333</li>
+                </ul>
+            </div>
+
+            <div class="mb-4 p-3 border-a r3">
+                <h2 class="font-c mb-2">다음 시간</h2>
+                <p>xx시 xx분 남음</p>
+                <h4>5교시 수업</h4>
+            </div>
+            -->
+        </div>
+        
+        <div class="mt-auto w-100 dragfalse d-flex">
+            <div class="mx-auto">
+                <p class="h7 text-muted cursor d-inline-block" onclick="alert('test')">만든이들</p><br/>
+                <p class="d-inline-block">2021 아름인 / Areumin Team</p>
+            </div>
+        </div>
+
+    </div>
+    <div id="floating" onclick="func()"><img id="menuicon" src="/src/img/icon/menu.png" alt="" class="img-fluid h-100 p-2"></div>
+    <div id="curtain" onclick="func()"></div>
+    <div id="content">
+        <div class="boxsize mx-auto">
+            <%- include(linkto) %>
+        </div>
+    </div>
+    
+    <script>
+        function nextversion(){ alert('아직 업데이트되지 않았습니다'); }
+    
+        function func(){
+            var query = matchMedia("screen and (min-width: 1200px)");
+            var check = document.getElementById('sidebar');
+    
+            if(window.getComputedStyle(check).left == '-300px'){
+                document.getElementById('sidebar').style.left = "0px";
+                
+                if(query.matches) { document.getElementById('curtain').style.display = "none"; document.getElementById('content').style.paddingLeft = "300px"; }
+                else              { document.getElementById('curtain').style.display = "block"; }
+            }
+            if(window.getComputedStyle(check).left == '0px'){
+                document.getElementById('sidebar').style.left = "-300px";
+                document.getElementById('curtain').style.display = "none";
+                document.getElementById('content').style.paddingLeft = "0px";
+            }
+        }
+
+        function hrefto(){
+            location.href = "/main";
+        }
+    </script>
+</body>
+</html>

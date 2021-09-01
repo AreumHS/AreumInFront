@@ -1,59 +1,130 @@
+#studentCard .modal-dialog{
+  max-width: 320px;
+}
 
-.content{
-  height: 100%;
+#studentCard .modal-dialog .modal-body{
+  height: 450px;
+  padding: 0 !important;
+}
+
+.card-top{
+  width: 100%;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.5rem 1rem;
+}
+
+.card-barcode{
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.card-bottom{
+  padding: 0.5rem;
+  border-radius: 0 0 1rem 1rem;
+  font-size: 12px;
+}
+
+.schicon{
+  width: 56px;
+  height: 56px;
+  margin-left: 0.5rem;
+}
+.schtext{
+  line-height: 56px;
+  text-align: center;
   width: 100%;
 }
 
-.align-med{
-  text-align: center;
+.card-main{
+  height: 100%;
+  padding: 1rem;
 }
 
-.box{
-  width: auto;
-  height: 100%;
-  background-color: white;
-  border-radius: 1.5rem;
-  overflow: hidden;
+.barcode{
+  width: 100%;
+  height: 72px;
+}
+
+.txt-sm{
+  font-size: 14px;
+}
+
+.status{
+  display: inline-block !important;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  margin-right: 0.25rem;
+  font-size: 14px;
 }
 
 .square{
   width: auto;
-  background-color: rgb(45,58,99);
-  border-radius: 1.5rem;
-}
-
-.squareleft{
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  border-radius: 1.5rem;
-}
-
-.rightpage{
-  display: flex;
-  flex-direction: column;
+  height: 0;
+  padding-bottom: 100%;
 }
 
 .imgsize{
   width: 100%;
-  border-radius: 1.5rem;
   object-fit: cover;
 }
 
 .slideimg{
-  opacity: 0.80;
+  opacity: 0.60;
 }
 
-.carousel-inner{
-  border-radius: 1.5rem;
-}
-
-.notice{
-  border: none;
-  width: 100%;
-  height: 50px;
-  border-radius: 1.5rem;
+.notice li{
+  padding: 0.5rem 0;
   font-size: 1.25rem;
-  text-align: left;
-  padding: 0 1rem;
+}
+
+.notice li a{
+  color: black !important;
+}
+
+.test{
+  height: 50px;
+  background: black;
+}
+
+.textbreak{
+  white-space: pre-wrap;
+}
+
+.img-btn{
+  width: 56px;
+  height: 56px;
+}
+.maxsizer{ width: 120px; padding-bottom: 120px;}
+.btn-service{
+  display: block;
+  height: 80px;
+  width:  80px;
+  padding: 12px;
+  margin: 0.5rem auto;
+  background-color: rgb(103, 132, 226);
+  border-radius: 2rem;
+}
+
+.divider{ padding: 0 0 0 2rem !important; }
+
+.divided-l{ margin: 0 1rem 0 0 !important; }
+.divided-r{ margin: 0 0 0 1rem !important; }
+
+.divided-t{ margin: 0 !important; }
+.divided-b{ margin: 0 !important; }
+
+@media screen and (max-width: 992px){
+  .divided-l{ margin: 0 0 1rem 0 !important; }
+  .divided-r{ margin: 1rem 0 0 0 !important; }
+
+  .divided-t{ margin: 0 0 1rem 0 !important; }
+  .divided-b{ margin: 1rem 0 0 0 !important; }
+
+  .divider{ padding: 0 !important; }
+  .maxsizer{ width: 160px; padding-bottom: 160px; margin-bottom : 1rem;}
+
+  .timetext{
+    text-align:left;
+  }
 }

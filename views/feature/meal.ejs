@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="/src/css/meal.css">
+
+<script>
+	var ml = "<%= ml %>";
+	var md = "<%= md %>";
+	console.log(ml);
+	console.log(md);
+</script>
+
+<script>
+	function getweekstr() {
+		var daystr = "";
+		var today = new Date();
+
+		today.setTime(today.getTime() + (1000 * 24 * 60 * 60) * 2);
+		var day = today.getDay();
+		var getmonday = (7 + day - 1) % 7;
+
+		today.setTime(today.getTime() + (1000 * 24 * 60 * 60) * (-getmonday));
+		var year = String(today.getFullYear());
+		var month = String(today.getMonth() + 1);
+		var date = String(today.getDate());
+		daystr += year + '.' + month + '.' + date + '~';
+
+		today.setTime(today.getTime() + (1000 * 24 * 60 * 60) * 4);
+		year = String(today.getFullYear());
+		month = String(today.getMonth() + 1);
+		date = String(today.getDate());
+		daystr += year + '.' + month + '.' + date;
+
+		document.write(daystr);
+	}
+</script>
+
+<% const day=['월', '화' , '수' , '목' , '금' ] %>
+
+	<div class="container padd min-vh-100 d-flex">
+		<div class="d-flex align-self-center">
+			<div class="row row-cols-1 row-cols-lg-5 gy-3">
+				<div class="col col-lg-12">
+					<div class="timebox bg-colored font-c border-a r3 p-4">
+						<h3>
+							<script>getweekstr()</script>
+						</h3>
+					</div>
+				</div>
+
+				<% for(var i=0; i < 5; i++){ %>
+					<div class="col">
+						<div class="mealbox border-a r3">
+							<button id="m<%= i %>" class="mealinner bg-white" onclick="toggle(<%= i %>)">
+								<div class="meal p-4">
+									<h3 class="font-c">
+										<%- day[i] %> - 중식
+									</h3>
+									<br>
+									<p class="font-n">
+										<%- ml[i + 1] %>
+									</p>
+								</div>
+								<div class="meal bg-colored r3 p-4">
+									<h3 class="font-c">
+										<%- day[i] %> - 석식
+									</h3>
+									<br>
+									<p class="font-n">
+										<%- md[i + 1] %>
+									</p>
+								</div>
+							</button>
+						</div>
+					</div>
+					<% } %>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var dinner = false;
+
+		function toggle(num) {
+
+			document.getElementById('m' + num).style.transitionDelay = '0s';
+			for (var i = 1; i <= 5; i++) {
+				if (num - i >= 0) {
+					document.getElementById('m' + (num - i)).style.transitionDelay = '0.' + i + 's';
+				}
+				if (num + i < 5) {
+					document.getElementById('m' + (num + i)).style.transitionDelay = '0.' + i + 's';
+				}
+			}
+			for (var btn = 0; btn < 5; btn++) {
+				document.getElementById('m' + btn).style.top = (dinner ? '0rem' : '-30rem');
+			}
+			dinner = (dinner ? false : true);
+		}
+	</script>

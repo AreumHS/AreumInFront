@@ -1,36 +1,53 @@
-.content{
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
+
+.height-100{
+    height: 100%;
+    position: relative;
 }
 
-.timetable{
-	margin-top: 10vh;
-	height: 80vh;
-	width: 100%;
-	border-radius: 1.5rem;
-  background-color: white;
-	overflow: hidden;
-	text-align: center;
+.rs{ border-top-left-radius: 1rem;  border-bottom-left-radius: 1rem; }
+.re{ border-top-right-radius: 1rem; border-bottom-right-radius: 1rem; }
+
+.p-4-lg { padding: 1.5rem;  }
+.mb-4-lg{ margin-bottom: 1.5rem; }
+
+th{ height: 72px; }
+td{ font-size: 18px; word-wrap: break-word; border-right: 1px solid #efeff1; height: 72px; width: 20%; padding: 8px;}
+tr{ border-bottom: 1px solid #efeff1; }
+
+.timebox{
+    display: inline-block;
+}
+.title{
+    height: 80px;
 }
 
-.timetable th{
-	font-size: 2rem;
-	background-color: #6784e2;
-	color: white;
+.title th { border-right:  1px solid transparent; border-radius: 1rem; }
+.tdn      { border-right:  1px solid transparent; }
+.trn      { border-bottom: 1px solid transparent; }
+
+
+th h2{
+    margin-bottom: 8px !important;
+    line-height: 72px;
+    height: 72px;
+    border-radius: 1rem;
 }
 
-.timetable td{
-	font-size: 1.5rem;
-	background-color: white;
-	color: black;
+.today{
+    background-color: rgb(103, 132, 226);
+    color: white;
 }
 
-@media screen and (max-width : 992px) {
-	.timetable th{
-		font-size: 24px;
-	}
-	.timetable td{
-		font-size: 16px;
-	}
+@media screen and (max-width: 992px){
+    th h2{
+        line-height: 64px;
+        height: 64px;
+        border-radius: 1.75rem;
+    }
+
+    .title{ height: 72px; }
+
+    .p-4-lg{ padding: 0.5rem; }
+
+    td{ font-size: 0.8rem; }
 }
