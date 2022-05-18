@@ -11,7 +11,7 @@
 .mb-4-lg{ margin-bottom: 1.5rem; }
 
 th{ height: 72px; }
-td{ font-size: 18px; word-wrap: break-word; border-right: 1px solid #efeff1; height: 72px; width: 20%; padding: 8px;}
+td{ font-size: 18px; word-wrap: normal; border-right: 1px solid #efeff1; height: 72px; width: 20%; padding: 8px;}
 tr{ border-bottom: 1px solid #efeff1; }
 
 .timebox{
@@ -49,5 +49,5 @@ th h2{
 
     .p-4-lg{ padding: 0.5rem; }
 
-    td{ font-size: 0.8rem; }
+    td{ font-size: 0.8rem; padding: 4px;}
 }

@@ -6,6 +6,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- 오픈그래프 태그 연동 -->
+    <meta property="og:title" content="아름in">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://dev.areum.in/src/img/opengraph.png">
+    <meta property="og:description" content="아름고등학교 인트라넷, 아름in입니다.">
+
 	<!-- My CSS -->
 	<link rel="stylesheet" href="/src/css/login.css">
 	<link rel="stylesheet" href="/src/lib/library.css">
@@ -25,19 +31,20 @@
 				<p>
 					서비스를 이제 막 시작했습니다!<br />
 					아직 수많은 버그가 있을 수 있습니다<br />
-				</p> <br />
+					<br/>
+					% 비밀번호 자동생성기를 이용하지 말아주세요 %<br/>
+					로그인창에 자동입력이 안되는 문제가 발생한다 합니다.
+				</p> <br/>
 				<p>
 					버그 발견시 20709 박성훈에게 제보해주세요!<br />
-					<a href="https://open.kakao.com/me/koderpark">버그 제보 링크</a><br />
-				</p> <br />
+					<a target="_blank" href="https://open.kakao.com/me/koderpark">버그 제보 링크</a><br />
+				</p> <br/>
 				<p>
 					회원가입 이후에 로그인이 가능합니다<br />
 				</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-white font-c" data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary font-c"
-					onclick="location.href = '/register';">회원가입</button>
 			</div>
 		</div>
 	</div>
@@ -70,16 +77,12 @@
 						<div id="carousel" class="h-100 carousel slide font-n" data-bs-ride="carousel">
 							<div class="carousel-inner">
 								<div class="carousel-item active p-meal">
-									<h3>
-										중식<br>
-										<%- ml %>
-									</h3>
+									<h2 class="mb-2">중식</h2>
+									<h3><%- ml %></h3>
 								</div>
 								<div class="carousel-item p-meal">
-									<h3>
-										석식<br>
-										<%- md %>
-									</h3>
+									<h2 class="mb-2">석식</h2>
+									<h3><%- md %></h3>
 								</div>
 							</div>
 							<button class="carousel-control-prev" type="button"

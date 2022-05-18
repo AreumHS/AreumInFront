@@ -1,11 +1,8 @@
 {
-  "name": "areumin-api",
+  "name": "areum-in-front",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "autorun": "nodemon index"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {

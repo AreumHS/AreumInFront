@@ -83,6 +83,13 @@ h1,h2,h3,h4,h5,h6{ margin: 0px !important; }
 
 .row-cols-lg-7 .col{ width: 14.285714285714285714285714285714%; }
 
+.carousel{
+    overflow: hidden !important;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+}
 /***************** Modal 관련 CSS 시작 ******************/
 
 .fade .modal-dialog{ z-index: 1001 !important; }
@@ -116,7 +123,8 @@ h1,h2,h3,h4,h5,h6{ margin: 0px !important; }
 }
 
 .modal-backdrop.show{
-    opacity: .8 !important;
+    background-color: black !important;
+    opacity: .7 !important;
 }
 
 
@@ -127,7 +135,7 @@ h1,h2,h3,h4,h5,h6{ margin: 0px !important; }
 }
 
 @media screen and (max-width: 992px){
-    .padd{ padding: 1rem !important; }
+    .padd{ padding: 1rem 0.5rem !important; }
     .row-cols-lg-7 .col{ width: 100%; }
 
     *::-webkit-scrollbar{

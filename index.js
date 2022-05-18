@@ -1,25 +1,45 @@
+// pre-define
 const express = require('express');
 const ejs = require('ejs');
 const request = require('request');
-const { query, urlencoded, json } = require('express');
-const { get } = require('request');
-const app = express();
 const cookieparser = require('cookie-parser');
 
+const app = express();
+
+
+// https redirect routers
+app.all("*", function(req,res,next){
+  let protocol = req.headers['x-forwarded-proto'] || req.protocol;
+  if(protocol == 'http'){ res.redirect("https://"+req.hostname + req.url); }
+  else{ next(); }
+});
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
+app.use(express.json());
 app.use(express.static(__dirname + '/'));
 app.use(cookieparser());
 
+// function define
+function getCookie(cookie, name) {
+  var vname = name + "=";
+  var ar = cookie.split(';');
+  for (var i = 0; i < ar.length; i++) {
+    var cstr = ar[i];
+    while (cstr.charAt(0) == ' ') cstr = cstr.substring(1, cstr.length);
+    if (cstr.indexOf(vname) == 0) return cstr.substring(vname.length, cstr.length);
+  }
+  return null;
+}
+
+//special routers ( include post entrypoints )
 app.get('/', function (req, res) {
   res.render('ect/location', { url: 'login' });
 });
 
 app.get('/logout', function (req, res) {
   res.clearCookie('key');
-  res.render('ect/logout', {});
+  res.send("<script> location.href = '/'; </script>");
 });
 
 app.post('/entry', function (req, res) {
@@ -32,15 +52,14 @@ app.post('/entry', function (req, res) {
     }, function (error, response, body) {
       if (body != 'Failed') {
         const msday = 1000 * 24 * 60 * 60;
-        res.cookie('key', body, {
-          maxAge: msday
-        });
+        res.cookie('key', body, { maxAge: msday });
+        res.send("<script> location.href = '/main'; </script>");
       }
-      res.render('ect/entry', { stat: body });
+      else{ res.send("<script> alert('잘못된 아이디 또는 비밀번호를 입력하셨습니다.'); location.href = '/login'; </script>"); }
     });
   } catch (error) {
     console.log(error);
-    //res.render('ect/error', { log: error });
+    res.render('ect/error', { log: error });
   }
 });
 
@@ -61,25 +80,16 @@ app.post('/regientry', function (req, res) {
       },
       json: true
     }, function (error, response, body) {
-      res.render('ect/regientry', { stat: body.status, log: body });
+      if(body.status == 'Failed'){ res.send("<script> alert('입력한 정보들을 다시 확인해주세요.'); location.href = '/register'; </script>"); }
+      else{ res.send("<script> alert('회원가입 완료!'); location.href = '/login'; </script>"); }
     });
   } catch (error) {
     console.log(error);
-    // res.render('ect/error', { log: error });
+    res.render('ect/error', { log: error });
   }
 });
 
-function getCookie(cookie, name) {
-  var vname = name + "=";
-  var ar = cookie.split(';');
-  for (var i = 0; i < ar.length; i++) {
-    var cstr = ar[i];
-    while (cstr.charAt(0) == ' ') cstr = cstr.substring(1, cstr.length);
-    if (cstr.indexOf(vname) == 0) return cstr.substring(vname.length, cstr.length);
-  }
-  return null;
-}
-
+//primary routers
 app.get('/:input', function (req, res) {
   try {
     const pagelist = ['login', 'register', 'main', 'meal', 'shop', 'time', 'calendar'];
@@ -89,11 +99,10 @@ app.get('/:input', function (req, res) {
     //잘못된 주소 >> 404
     //올바른 주소인데 로그인 x >> /register이면 /register로 이동 >> 아니면 /login으로 이동
     //올바른 주소인데 로그인 o >> /register또는 /login 이면 /main으로 이동 >> 아니면 page로 이동
+    
 
-
-    if (pagelist.indexOf(page) == -1) {
-      //res.render('ect/404', {});
-    } else {
+    if (pagelist.indexOf(page) == -1) { res.render('ect/404', {}); }
+    else {
       if (mycookie == 'undefined') {
         switch (page) {
           case 'login': {
@@ -150,7 +159,7 @@ app.get('/:input', function (req, res) {
                 method: 'get',
                 json: true
               }, function (error, response, body) {
-                res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum, time: JSON.parse(body.body), title:body.title });
+                res.render('feature/wrapper', { linkto: page, stdname: stdname, schnum: schnum, time: body.body, title:body.title });
               });
               break;
             } case 'calendar': {
@@ -166,13 +175,19 @@ app.get('/:input', function (req, res) {
     }
   } catch (error) {
     console.log(error);
-    //res.render('ect/error', { log: error });
+    res.render('ect/error', { log: error });
   }
 });
 
-app.use(function (req, res, next) {
-  next(createError(404));
+app.listen(8081, function () {
+  console.log("Running now...");
 });
+
+
+
+
+
+
 /*
 app.use(function (err, req, res, next) {
   //res.locals.message = err.message;
@@ -182,8 +197,26 @@ app.use(function (err, req, res, next) {
   res.render('ect/404',{});
 });
 */
-app.listen(8081, function () {
-  console.log("Running now...");
-});
 
 //  <%- include(linkto) %> 로 include함
+
+/* 테스트 코드 ( 쿠키등록 )
+app.post('/test', function (req, res) {
+  try {
+    request({
+      uri: 'https://api.areum.in/test',
+      method: 'POST',
+      body: {
+        code: getCookie(req.headers.cookie, "key"),
+        diff: req.body.barcode
+      },
+      json: true
+    }, function (error, response, body) {
+      res.render('ect/test', { stat: body });
+    });
+  } catch (error) {
+    console.log(error);
+    // res.render('ect/error', { log: error });
+  }
+})
+*/

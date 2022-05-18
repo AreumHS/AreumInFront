@@ -44,6 +44,8 @@
 .barcode{
   width: 100%;
   height: 72px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
 }
 
 .txt-sm{
@@ -80,6 +82,36 @@
 
 .notice li a{
   color: black !important;
+}
+
+.cambox{
+  width: 100%;
+}
+
+.cambox video{
+  position: relative !important;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.cambox canvas{
+  position: absolute !important;
+  left: 0;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.disable{
+  display: none;
+}
+
+.notice li button{
+  color: black !important;
+  position: inherit;
+  border: none;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
 }
 
 .test{

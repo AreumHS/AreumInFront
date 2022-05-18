@@ -24,7 +24,7 @@
 				<p class="font-n align-self-center">학생증의 바코드를 스캔해주세요.</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-white font-c" data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-white font-c" data-bs-dismiss="modal" onclick="cam()">닫기</button>
 			</div>
 		</div>
 	</div>
@@ -67,6 +67,22 @@
 				</div>
 
 				<div id="list2" class="flex-column h-100">
+					<h1 class="font-c mb-auto h0">개인정보</h1>
+
+					<p class="font-n mt-auto">이름</p>
+					<input name="name" class="obj input p-3 mt-1" type="text" placeholder="실명">
+					<p class="font-n mt-1">학번</p>
+					<input name="pid" class="obj input p-3 mt-1" type="text" placeholder="숫자 다섯글자 ex) 20709">
+
+					<div class="btnbox align-self-end d-flex justify-content-end mt-4">
+						<button type="button" class="mybtn btn-primary mr p-2" onclick="prev()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit rev"></button>
+						<button type="button" class="mybtn btn-primary ml p-2" onclick="next()"><img
+								src="/src/img/icon/white-arrow-3.png" class="fit"></button>
+					</div>
+				</div>
+
+				<div id="list3" class="flex-column h-100">
 					<h1 class="font-c mb-auto h0">계정정보</h1>
 
 					<p class="font-n mt-1">아이디</p>
@@ -82,29 +98,14 @@
 					</div>
 				</div>
 
-				<div id="list3" class="flex-column h-100">
+				<div id="list4" class="flex-column h-100">
 					<h1 class="font-c mb-auto h0">비밀번호</h1>
 
 					<p class="font-n mt-1">비밀번호</p>
-					<input name="pw" class="obj input p-3 mt-1" type="password" placeholder="4자 이상의 영어 숫자 특문">
+					<input id="pw1" name="pw" class="obj input p-3 mt-1" type="password" placeholder="4자 이상의 영어 숫자 특문">
 					<p class="font-n mt-1">비밀번호 확인</p>
-					<input name="pw2" class="obj input p-3 mt-1" type="password" placeholder="비밀번호 한번 더 입력">
-
-					<div class="btnbox align-self-end d-flex justify-content-end mt-4">
-						<button type="button" class="mybtn btn-primary mr p-2" onclick="prev()"><img
-								src="/src/img/icon/white-arrow-3.png" class="fit rev"></button>
-						<button type="button" class="mybtn btn-primary ml p-2" onclick="next()"><img
-								src="/src/img/icon/white-arrow-3.png" class="fit"></button>
-					</div>
-				</div>
-
-				<div id="list4" class="flex-column h-100">
-					<h1 class="font-c mb-auto h0">개인정보</h1>
-
-					<p class="font-n mt-auto">이름</p>
-					<input name="name" class="obj input p-3 mt-1" type="text" placeholder="실명">
-					<p class="font-n mt-1">학번</p>
-					<input name="pid" class="obj input p-3 mt-1" type="text" placeholder="숫자 다섯글자 ex) 20709">
+					<input id="pw2" name="pw2" class="obj input p-3 mt-1" type="password" placeholder="비밀번호 한번 더 입력">
+					
 					<p class="font-n mt-1">제출하기</p>
 					<button type="submit" class="obj btn-primary input font-c p-2 mt-1">회원가입</button>
 

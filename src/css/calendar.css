@@ -12,7 +12,7 @@
     overflow: hidden;
 }
 
-.calendar div div div h2{
+.YMtitle{
     font-size: 2em !important;
     font-family: 'jalnan';
 }
@@ -41,4 +41,14 @@
 .calendar div div div table tbody tr td div div div table tbody tr td div div a{
     font-family: 'wa-sans';
     color: darkgray !important;
+}
+
+@media screen and (max-width: 996px) {
+    .calendar{ height: 600px; }
+    .YMtitle{ font-size: 1.5rem !important; }
+    .btn-reset{ display: none !important; }
+}
+
+@media screen and (max-width: 768px) {
+    .calendar{ height: 550px; }
 }

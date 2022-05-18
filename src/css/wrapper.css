@@ -6,7 +6,7 @@
   height: 100%;
   width: 300px;
   transition: .5s;
-  z-index: 3;
+  z-index: 5;
 
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -44,8 +44,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(45,58,99,0.33);
-  z-index: 2;
+  background-color: black;
+  opacity: .7;
+  z-index: 4;
   transition: 0.5s;
 }
 
